@@ -1,0 +1,14 @@
+.navbar  {
+    background: #4d4f53;
+    border: 0;
+}
+
+.navbar .nav.navbar-nav li a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 110%;
+}
+
+.navbar .nav.navbar-nav li a:hover {
+    background: #ed5624;
+}
