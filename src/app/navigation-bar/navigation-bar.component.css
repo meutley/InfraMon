@@ -9,6 +9,10 @@
     font-size: 110%;
 }
 
+.navbar .nav.navbar-nav .active > a {
+    background: #02a17c;
+}
+
 .navbar .nav.navbar-nav li a:hover {
     background: #ed5624;
 }
