@@ -9,12 +9,16 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 
 import AppRoutes from './app.routes';
 import { HomeComponent } from './home/home.component';
+import { MonitorListComponent } from './home/monitor-list/monitor-list.component';
+import { MonitorListItemComponent } from './home/monitor-list/monitor-list-item/monitor-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationBarComponent,
-    HomeComponent
+    HomeComponent,
+    MonitorListComponent,
+    MonitorListItemComponent
   ],
   imports: [
     BrowserModule,
