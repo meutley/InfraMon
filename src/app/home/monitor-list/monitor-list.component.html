@@ -1,5 +1,11 @@
 <h3>Active Monitors</h3>
-<ul id="monitor-list">
+<div *ngIf="isLoading">
+  Loading...
+</div>
+<div *ngIf="!isLoading && didLoadingFail">
+  <span class="text-danger">Loading active monitors failed</span>
+</div>
+<ul id="monitor-list" *ngIf="!isLoading && !didLoadingFail">
   <li *ngFor="let monitor of monitors">
     <app-monitor-list-item [monitor]="monitor"></app-monitor-list-item>
   </li>
