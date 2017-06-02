@@ -33,6 +33,24 @@ export class MonitorApiService {
       .catch(this.handleError);
   }
 
+  saveMonitor(monitor: Monitor): Observable<any> {
+    const isNew = monitor.id === 0;
+    const method = isNew ? 'create' : 'update';
+    const url =
+      isNew
+      ? this.urlBuilderService.build(AppSettings.MONITOR_API_URL, method)
+      : this.urlBuilderService.build(AppSettings.MONITOR_API_URL, method, monitor.id.toString());
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const requestBody = JSON.stringify(monitor)
+
+    return this.http.post(url, requestBody, { headers: headers })
+      .map((res: Response) => res)
+      .catch((err: any) => Observable.throw(err || 'Server error'));
+  }
+
   private extractMonitor(response: Response): Monitor {
     const monitor = response.json();
 
