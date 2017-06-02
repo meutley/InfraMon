@@ -1,0 +1,9 @@
+<div *ngIf="isLoading && !didLoadingFail">
+  Loading the monitor details...
+</div>
+<div *ngIf="!isLoading && didLoadingFail">
+  <span class="text-danger">Failed to load monitor details.</span>
+</div>
+<div *ngIf="!isLoading && !didLoadingFail">
+  Monitor details loaded successfully.
+</div>

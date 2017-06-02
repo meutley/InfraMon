@@ -22,18 +22,27 @@ export class MonitorListComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
+    const self = this;
 
     this.monitorApiService
       .getMonitors()
       .subscribe(data => {
-        this.isLoading = false;
-        this.didLoadingFail = false;
-        this.monitors = data;
+        self.finishLoading(data);
       }, err => {
-        this.isLoading = false;
-        this.didLoadingFail = true;
-        this.responseStatusCode = err.status;
+        self.onLoadError(err);
       });
+  }
+
+  private finishLoading(data) {
+    this.isLoading = false;
+    this.didLoadingFail = false;
+    this.monitors = data;
+  }
+
+  private onLoadError(err) {
+    this.isLoading = false;
+    this.didLoadingFail = true;
+    this.responseStatusCode = err.status;
   }
 
 }

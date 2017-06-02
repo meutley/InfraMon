@@ -14,10 +14,23 @@ export class MonitorApiService {
   constructor(private http: Http) {
   }
 
+  getMonitor(id: number): Observable<Monitor> {
+    return this.http.get('http://localhost:4200/api/monitor/' + id)
+      .map(this.extractMonitor)
+      .catch(this.handleError);
+  }
+
   getMonitors(): Observable<Monitor[]> {
     return this.http.get('http://localhost:4200/api/monitor')
-      .map((this.extractMonitors))
+      .map(this.extractMonitors)
       .catch(this.handleError);
+  }
+
+  private extractMonitor(response: Response): Monitor {
+    const monitor = response.json();
+    console.log(response);
+
+    return monitor;
   }
 
   private extractMonitors(response: Response): Monitor[] {

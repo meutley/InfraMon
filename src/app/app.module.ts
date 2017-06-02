@@ -10,9 +10,11 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { HomeComponent } from './home/home.component';
 import { MonitorListComponent } from './home/monitor-list/monitor-list.component';
 import { MonitorListItemComponent } from './home/monitor-list/monitor-list-item/monitor-list-item.component';
+import { MonitorDetailsComponent } from './monitor-details/monitor-details.component';
 
 const AppRoutes: Routes = [
-    { path: '', component: HomeComponent }
+    { path: '', component: HomeComponent },
+    { path: 'monitor-details/:id', component: MonitorDetailsComponent }
 ];
 
 @NgModule({
@@ -21,7 +23,8 @@ const AppRoutes: Routes = [
     NavigationBarComponent,
     HomeComponent,
     MonitorListComponent,
-    MonitorListItemComponent
+    MonitorListItemComponent,
+    MonitorDetailsComponent
   ],
   imports: [
     BrowserModule,
