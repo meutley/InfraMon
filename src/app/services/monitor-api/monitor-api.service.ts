@@ -35,7 +35,6 @@ export class MonitorApiService {
 
   private extractMonitor(response: Response): Monitor {
     const monitor = response.json();
-    console.log(response);
 
     return monitor;
   }
