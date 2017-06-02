@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Monitor } from '../models/monitor';
+
 @Component({
   selector: 'app-new-monitor',
   templateUrl: './new-monitor.component.html',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewMonitorComponent implements OnInit {
 
-  constructor() { }
+  monitor: Monitor;
+
+  constructor() {
+    this.monitor = new Monitor();
+  }
 
   ngOnInit() {
   }
