@@ -8,8 +8,7 @@ import { Monitor } from '../models/monitor';
 @Component({
   selector: 'app-monitor-details',
   templateUrl: './monitor-details.component.html',
-  styleUrls: ['./monitor-details.component.css'],
-  providers: [MonitorApiService]
+  styleUrls: ['./monitor-details.component.css']
 })
 export class MonitorDetailsComponent implements OnDestroy, OnInit {
 

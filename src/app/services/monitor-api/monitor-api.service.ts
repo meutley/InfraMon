@@ -6,22 +6,29 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
+import { AppSettings } from '../../app.settings';
+import { UrlBuilderService } from '../url-builder/url-builder.service';
+
 import { Monitor } from '../../models/monitor';
 
 @Injectable()
 export class MonitorApiService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private urlBuilderService: UrlBuilderService) {
   }
 
   getMonitor(id: number): Observable<Monitor> {
-    return this.http.get('http://localhost:4200/api/monitor/' + id)
+    const url = this.urlBuilderService.build(AppSettings.MONITOR_API_URL, id.toString());
+
+    return this.http.get(url)
       .map(this.extractMonitor)
       .catch(this.handleError);
   }
 
   getMonitors(): Observable<Monitor[]> {
-    return this.http.get('http://localhost:4200/api/monitor')
+    const url = AppSettings.MONITOR_API_URL;
+
+    return this.http.get(url)
       .map(this.extractMonitors)
       .catch(this.handleError);
   }

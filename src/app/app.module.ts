@@ -11,9 +11,14 @@ import { HomeComponent } from './home/home.component';
 import { MonitorListComponent } from './home/monitor-list/monitor-list.component';
 import { MonitorListItemComponent } from './home/monitor-list/monitor-list-item/monitor-list-item.component';
 import { MonitorDetailsComponent } from './monitor-details/monitor-details.component';
+import { NewMonitorComponent } from './new-monitor/new-monitor.component';
+
+import { MonitorApiService } from './services/monitor-api/monitor-api.service';
+import { UrlBuilderService } from './services/url-builder/url-builder.service';
 
 const AppRoutes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'new-monitor', component: NewMonitorComponent },
     { path: 'monitor-details/:id', component: MonitorDetailsComponent }
 ];
 
@@ -24,7 +29,8 @@ const AppRoutes: Routes = [
     HomeComponent,
     MonitorListComponent,
     MonitorListItemComponent,
-    MonitorDetailsComponent
+    MonitorDetailsComponent,
+    NewMonitorComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,10 @@ const AppRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [],
+  providers: [
+    MonitorApiService,
+    UrlBuilderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
