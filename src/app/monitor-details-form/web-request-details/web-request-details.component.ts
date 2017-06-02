@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { WebRequestTypeValidatorService } from '../../services/web-request-type-validator/web-request-type-validator.service';
 import { WebRequestTestService } from '../../services/web-request-test/web-request-test.service';
+
+import { WebRequestMethod } from '../../app.globals';
 
 import { WebRequest } from '../../models/web-request';
 
@@ -11,7 +14,10 @@ import { WebRequest } from '../../models/web-request';
 })
 export class WebRequestDetailsComponent implements OnInit {
 
-  methods = [ 'GET' ];
+  methods = [
+    WebRequestMethod.Get,
+    WebRequestMethod.Post
+  ];
 
   isTesting: boolean;
   testUrlResponseStatusCode: any;
@@ -19,7 +25,12 @@ export class WebRequestDetailsComponent implements OnInit {
   @Input()
   webRequestDetails: WebRequest;
 
-  constructor(private webRequestTestService: WebRequestTestService) {
+  @Input()
+  isSaving: boolean;
+
+  constructor(
+    private webRequestTestService: WebRequestTestService,
+    private webRequestTypeValidatorService: WebRequestTypeValidatorService) {
     this.testUrlResponseStatusCode = null;
   }
 
@@ -27,10 +38,7 @@ export class WebRequestDetailsComponent implements OnInit {
   }
 
   canTest(): boolean {
-    return !this.isTesting
-      && (this.webRequestDetails.url && this.webRequestDetails.url.length > 0)
-      && (this.webRequestDetails.method && this.webRequestDetails.method.length > 0)
-      && this.webRequestDetails.expectedResponseStatusCode != null;
+    return !this.isTesting && this.webRequestTypeValidatorService.validate(this.webRequestDetails);
   }
 
   doTestUrl() {
@@ -50,7 +58,7 @@ export class WebRequestDetailsComponent implements OnInit {
   }
 
   doShowTestResponseStatusCode(): boolean {
-    return !this.isTesting && this.testUrlResponseStatusCode !== null && this.testUrlResponseStatusCode !== undefined;
+    return !this.isTesting && this.testUrlResponseStatusCode !== null && this.testUrlResponseStatusCode !== undefined && !this.isSaving;
   }
 
 }

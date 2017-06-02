@@ -38,6 +38,15 @@ router.get('/:id?', (req, res) => {
     }
 });
 
+router.post('/create', (req, res) => {
+    mockData.monitors.push(req.body);
+    responseUtility.sendResponse(res, 200);
+});
+
+router.post('/update/:id', (req, res) => {
+    responseUtility.sendResponse(res, 200);
+});
+
 module.exports = {
     path: '/api/monitor',
     router: router

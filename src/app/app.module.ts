@@ -7,6 +7,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { MonitorApiService } from './services/monitor-api/monitor-api.service';
 import { UrlBuilderService } from './services/url-builder/url-builder.service';
 import { WebRequestTestService } from './services/web-request-test/web-request-test.service';
+import { MonitorValidatorService } from './services/monitor-validator/monitor-validator.service';
+import { WebRequestTypeValidatorService } from './services/web-request-type-validator/web-request-type-validator.service';
+import { PingTypeValidatorService } from './services/ping-type-validator/ping-type-validator.service';
 
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
@@ -47,7 +50,10 @@ const AppRoutes: Routes = [
   providers: [
     MonitorApiService,
     UrlBuilderService,
-    WebRequestTestService
+    WebRequestTestService,
+    MonitorValidatorService,
+    WebRequestTypeValidatorService,
+    PingTypeValidatorService
   ],
   bootstrap: [AppComponent]
 })

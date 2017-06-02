@@ -9,6 +9,7 @@ export class Monitor {
     pingDetails: Ping;
 
     constructor() {
+        this.id = 0;
         this.webRequestDetails = new WebRequest();
         this.pingDetails = new Ping();
     }

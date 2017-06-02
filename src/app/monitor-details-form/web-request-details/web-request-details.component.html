@@ -2,11 +2,11 @@
   <legend>Web Request Details</legend>
   <div class="form-group">
     <label for="inputUrl">URL</label>
-    <input type="text" class="form-control" id="inputUrl" name="inputUrl" placeholder="URL" [(ngModel)]="webRequestDetails.url"/>
+    <input type="text" class="form-control" id="inputUrl" name="inputUrl" placeholder="URL" [disabled]="isSaving" [(ngModel)]="webRequestDetails.url"/>
   </div>
   <div class="form-group">
     <label for="inputMethod">Method</label>
-    <select class="form-control" id="inputMethod" name="inputMethod" [(ngModel)]="webRequestDetails.method">
+    <select class="form-control" id="inputMethod" name="inputMethod" [disabled]="isSaving" [(ngModel)]="webRequestDetails.method">
       <option *ngFor="let method of methods" [ngValue]="method">
         {{method}}
       </option>
@@ -14,7 +14,7 @@
   </div>
   <div class="form-group">
     <label for="inputExpectedStatusCode">Expected Response Status Code (e.g. 200)</label>
-    <input type="text" class="form-control" id="inputExpectedStatusCode" name="inputExpectedStatusCode" placeholder="Expected Response Status Code (e.g. 200)" [(ngModel)]="webRequestDetails.expectedResponseStatusCode"/>
+    <input type="text" class="form-control" id="inputExpectedStatusCode" name="inputExpectedStatusCode" placeholder="Expected Response Status Code (e.g. 200)" [disabled]="isSaving" [(ngModel)]="webRequestDetails.expectedResponseStatusCode"/>
   </div>
   <div class="form-group">
     <input type="button" class="btn btn-primary" value="Test URL..." [disabled]="!canTest()" (click)="doTestUrl()"/>
