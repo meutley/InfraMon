@@ -28,10 +28,14 @@ export class WebRequestDetailsComponent implements OnInit {
   @Input()
   isSaving: boolean;
 
+  @Input()
+  isReadOnly: boolean;
+
   constructor(
     private webRequestTestService: WebRequestTestService,
     private webRequestTypeValidatorService: WebRequestTypeValidatorService) {
     this.testUrlResponseStatusCode = null;
+    this.isReadOnly = false;
   }
 
   ngOnInit() {

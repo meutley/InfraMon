@@ -4,6 +4,6 @@ export class WebRequestMethod {
 }
 
 export class MonitorType {
-    static WebRequest = 'WebRequest';
+    static WebRequest = 'Web Request';
     static Ping = 'Ping';
 }

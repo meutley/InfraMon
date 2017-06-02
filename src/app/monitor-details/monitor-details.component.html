@@ -5,5 +5,6 @@
   <span class="text-danger">Failed to load monitor details.</span>
 </div>
 <div *ngIf="!isLoading && !didLoadingFail">
-  <h3>{{monitor.name}}</h3>
+  <h1>{{monitor.name}} <input type="button" class="btn btn-primary" [value]="getEditButtonText()" (click)="onClickEditButton()"/><input type="button" *ngIf="isEditing" class="btn btn-default" value="Cancel" (click)="onCancelEdit()"/></h1>
+  <app-monitor-details-form [monitor]="monitor" [isReadOnly]="!isEditing"></app-monitor-details-form>
 </div>

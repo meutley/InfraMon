@@ -19,6 +19,8 @@ export class MonitorDetailsComponent implements OnDestroy, OnInit {
   private isLoading: boolean;
   private didLoadingFail: boolean;
 
+  private isEditing: boolean;
+
   constructor(private route: ActivatedRoute, private monitorApiService: MonitorApiService) {
   }
 
@@ -46,6 +48,18 @@ export class MonitorDetailsComponent implements OnDestroy, OnInit {
         this.isLoading = false;
         this.didLoadingFail = true;
       });
+  }
+
+  private getEditButtonText(): string {
+    return this.isEditing ? 'Save' : 'Edit';
+  }
+
+  private onClickEditButton() {
+    this.isEditing = !this.isEditing;
+  }
+
+  private onCancelEdit() {
+    this.isEditing = false;
   }
 
 }

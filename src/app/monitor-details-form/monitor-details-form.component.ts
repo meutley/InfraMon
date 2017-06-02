@@ -25,6 +25,9 @@ export class MonitorDetailsFormComponent implements OnInit {
   @Input()
   monitor: Monitor;
 
+  @Input()
+  isReadOnly: boolean;
+
   constructor(
     private router: Router,
     private monitorApiService: MonitorApiService,
@@ -32,6 +35,7 @@ export class MonitorDetailsFormComponent implements OnInit {
     this.isSaving = false;
     this.didFinishSave = false;
     this.didSaveFail = false;
+    this.isReadOnly = false;
   }
 
   ngOnInit() {

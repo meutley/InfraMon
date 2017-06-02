@@ -1,4 +1,4 @@
-<div *ngIf="didFinishSave">
+<div *ngIf="didFinishSave && !isReadOnly">
   <div [ngClass]="{'alert': true, 'alert-success': !didSaveFail, 'alert-danger': didSaveFail}">
     {{afterSaveMessage}}
   </div>
@@ -6,23 +6,25 @@
 <form class="form">
   <div class="form-group">
     <label for="inputName">Name</label>
-    <input type="text" class="form-control" id="inputName" name="inputName" [disabled]="isSaving" [(ngModel)]="monitor.name" placeholder="Name"/>
+    <input *ngIf="!isReadOnly" type="text" class="form-control" id="inputName" name="inputName" [disabled]="isSaving" [(ngModel)]="monitor.name" placeholder="Name"/>
+    <p *ngIf="isReadOnly">{{monitor.name}}</p>
   </div>
   <div class="form-group">
     <label for="inputType">Type</label>
-    <select class="form-control" id="inputType" name="inputType" [disabled]="isSaving" [(ngModel)]="monitor.type">
+    <select *ngIf="!isReadOnly" class="form-control" id="inputType" name="inputType" [disabled]="isSaving" [(ngModel)]="monitor.type">
       <option *ngFor="let type of types" [ngValue]="type">
         {{type}}
       </option>
     </select>
+    <p *ngIf="isReadOnly">{{monitor.type}}</p>
   </div>
   <div *ngIf="isWebRequestType()" class="form-group">
-    <app-web-request-details [webRequestDetails]="monitor.webRequestDetails" [isSaving]="isSaving"></app-web-request-details>
+    <app-web-request-details [webRequestDetails]="monitor.webRequestDetails" [isSaving]="isSaving" [isReadOnly]="isReadOnly"></app-web-request-details>
   </div>
   <div *ngIf="isPingType()" class="form-group">
     <app-ping-details></app-ping-details>
   </div>
-  <div class="form-group">
+  <div class="form-group" *ngIf="!isReadOnly">
     <input type="button" class="btn btn-primary" value="Save" [disabled]="!canSave()" (click)="doSave()"/>
     <input type="button" class="btn btn-default" value="Cancel" [disabled]="isSaving" (click)="doCancel()"/>
   </div>
