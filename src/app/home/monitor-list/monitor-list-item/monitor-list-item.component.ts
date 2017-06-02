@@ -5,7 +5,7 @@ import { Monitor } from '../../../models/monitor';
 @Component({
   selector: 'app-monitor-list-item',
   templateUrl: './monitor-list-item.component.html',
-  styleUrls: ['./monitor-list-item.component.css']
+  styleUrls: ['./monitor-list-item.component.scss']
 })
 export class MonitorListItemComponent implements OnInit {
 

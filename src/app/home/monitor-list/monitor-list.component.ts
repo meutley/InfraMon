@@ -7,7 +7,7 @@ import { Monitor } from '../../models/monitor';
 @Component({
   selector: 'app-monitor-list',
   templateUrl: './monitor-list.component.html',
-  styleUrls: ['./monitor-list.component.css'],
+  styleUrls: ['./monitor-list.component.scss'],
   providers: [MonitorApiService]
 })
 export class MonitorListComponent implements OnInit {
