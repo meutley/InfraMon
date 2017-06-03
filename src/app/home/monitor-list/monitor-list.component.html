@@ -5,7 +5,10 @@
 <div *ngIf="!isLoading && didLoadingFail">
   <span class="text-danger">Loading active monitors failed</span>
 </div>
-<ul id="monitor-list" *ngIf="!isLoading && !didLoadingFail">
+<div *ngIf="!hasMonitors()" class="alert alert-warning">
+  No monitors available. <a [routerLink]="['/new-monitor']">Create one now.</a>
+</div>
+<ul id="monitor-list" *ngIf="shouldListMonitors()">
   <li *ngFor="let monitor of monitors">
     <app-monitor-list-item [monitor]="monitor"></app-monitor-list-item>
   </li>

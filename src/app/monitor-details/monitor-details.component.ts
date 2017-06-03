@@ -51,15 +51,11 @@ export class MonitorDetailsComponent implements OnDestroy, OnInit {
   }
 
   private getEditButtonText(): string {
-    return this.isEditing ? 'Save' : 'Edit';
+    return this.isEditing ? 'Cancel' : 'Edit';
   }
 
   private onClickEditButton() {
     this.isEditing = !this.isEditing;
-  }
-
-  private onCancelEdit() {
-    this.isEditing = false;
   }
 
 }

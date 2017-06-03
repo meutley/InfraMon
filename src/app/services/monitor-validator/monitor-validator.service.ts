@@ -14,7 +14,12 @@ export class MonitorValidatorService {
     private webRequestTypeValidatorService: WebRequestTypeValidatorService) { }
 
   validate(monitor: Monitor): boolean {
-    return monitor.name && monitor.name.length > 0 && this.isTypeValid(monitor);
+    return monitor.name !== undefined
+      && monitor.name !== null
+      && monitor.name.length > 0
+      && this.isTypeValid(monitor)
+      && monitor.frequencyAmount % 1 === 0
+      && monitor.frequencyPeriod.length > 0;
   }
 
   private isTypeValid(monitor: Monitor): boolean {

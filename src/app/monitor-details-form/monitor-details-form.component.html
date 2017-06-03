@@ -24,8 +24,24 @@
   <div *ngIf="isPingType()" class="form-group">
     <app-ping-details></app-ping-details>
   </div>
-  <div class="form-group" *ngIf="!isReadOnly">
-    <input type="button" class="btn btn-primary" value="Save" [disabled]="!canSave()" (click)="doSave()"/>
-    <input type="button" class="btn btn-default" value="Cancel" [disabled]="isSaving" (click)="doCancel()"/>
-  </div>
+  <fieldset>
+    <legend>Frequency (e.g. every 5 minutes)</legend>
+      <div class="form-group">
+        <label for="inputFrequencyAmount">Frequency Amount</label>
+        <input *ngIf="!isReadOnly" type="number" class="form-control" id="inputFrequencyAmount" name="inputFrequencyAmount" [disabled]="isSaving" [(ngModel)]="monitor.frequencyAmount" placeholder="Frequency Amount"/>
+        <p *ngIf="isReadOnly">{{monitor.frequencyAmount}}</p>
+      </div>
+      <div class="form-group">
+        <label for="inputFrequencyPeriod">Frequency Period</label>
+        <select *ngIf="!isReadOnly" class="form-control" id="inputFrequencyPeriod" name="inputFrequencyPeriod" [disabled]="isSaving" [(ngModel)]="monitor.frequencyPeriod">
+          <option *ngFor="let frequencyPeriod of frequencyPeriods" [ngValue]="frequencyPeriod">
+            {{frequencyPeriod}}
+          </option>
+        </select>
+        <p *ngIf="isReadOnly">{{monitor.frequencyPeriod}}</p>
+      </div>
+      <div class="form-group" *ngIf="!isReadOnly">
+        <input type="button" class="btn btn-primary" value="Save" [disabled]="!canSave()" (click)="doSave()"/>
+      </div>
+    </fieldset>
 </form>

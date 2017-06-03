@@ -8,8 +8,4 @@ describe('WebRequestTestService', () => {
       providers: [WebRequestTestService]
     });
   });
-
-  it('should ...', inject([WebRequestTestService], (service: WebRequestTestService) => {
-    expect(service).toBeTruthy();
-  }));
 });

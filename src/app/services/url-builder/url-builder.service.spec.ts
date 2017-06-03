@@ -9,10 +9,6 @@ describe('UrlBuilderService', () => {
     });
   });
 
-  it('should ...', inject([UrlBuilderService], (service: UrlBuilderService) => {
-    expect(service).toBeTruthy();
-  }));
-
   it('should return empty when no parts supplied', inject([UrlBuilderService], (service: UrlBuilderService) => {
     const result = service.build();
 

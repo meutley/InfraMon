@@ -45,4 +45,15 @@ export class MonitorListComponent implements OnInit {
     this.responseStatusCode = err.status;
   }
 
+  private hasMonitors(): boolean {
+    return this.monitors && this.monitors.length > 0;
+  }
+
+  private shouldListMonitors(): boolean {
+    return !this.isLoading
+      && !this.didLoadingFail
+      && this.monitors
+      && this.monitors.length > 0;
+  }
+
 }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Monitor } from '../models/monitor';
 
-import { MonitorType } from '../app.globals';
+import { FrequencyPeriod, MonitorType } from '../app.globals';
 import { AppSettings } from '../app.settings';
 import { MonitorApiService } from '../services/monitor-api/monitor-api.service';
 import { MonitorValidatorService } from '../services/monitor-validator/monitor-validator.service';
@@ -16,7 +16,9 @@ import { MonitorValidatorService } from '../services/monitor-validator/monitor-v
 export class MonitorDetailsFormComponent implements OnInit {
 
   types = [ MonitorType.WebRequest, MonitorType.Ping ];
+  frequencyPeriods = [ FrequencyPeriod.Seconds, FrequencyPeriod.Minutes, FrequencyPeriod.Hours ];
 
+  isNew: boolean;
   isSaving: boolean;
   didFinishSave: boolean;
   didSaveFail: boolean;
@@ -39,6 +41,7 @@ export class MonitorDetailsFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isNew = this.monitor.id === 0;
   }
 
   private isWebRequestType(): boolean {
@@ -59,15 +62,10 @@ export class MonitorDetailsFormComponent implements OnInit {
     this.monitorApiService
       .saveMonitor(this.monitor)
       .subscribe(res => {
-        console.log(res);
         this.handleSuccessfulSave(res);
       }, err => {
         this.handleErrorOnSave(err);
       });
-  }
-
-  private doCancel() {
-    this.router.navigateByUrl('/');
   }
 
   private handleSuccessfulSave(res: any) {

@@ -8,8 +8,4 @@ describe('MonitorApiService', () => {
       providers: [MonitorApiService]
     });
   });
-
-  it('should ...', inject([MonitorApiService], (service: MonitorApiService) => {
-    expect(service).toBeTruthy();
-  }));
 });

@@ -7,6 +7,8 @@ export class Monitor {
     type: string;
     webRequestDetails: WebRequest;
     pingDetails: Ping;
+    frequencyAmount: number;
+    frequencyPeriod: string;
 
     constructor() {
         this.id = 0;
