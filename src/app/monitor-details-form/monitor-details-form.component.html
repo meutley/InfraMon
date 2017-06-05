@@ -1,4 +1,4 @@
-<div *ngIf="saveAlertIsVisible()">
+<div *ngIf="didFinishSave && !isReadOnly">
   <div [ngClass]="{'alert': true, 'alert-success': !didSaveFail, 'alert-danger': didSaveFail}">
     {{afterSaveMessage}}
   </div>

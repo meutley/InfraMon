@@ -30,9 +30,6 @@ export class MonitorDetailsFormComponent implements OnInit {
   @Input()
   isReadOnly: boolean;
 
-  @Input()
-  shouldShowSaveAlert: boolean;
-
   constructor(
     private router: Router,
     private monitorApiService: MonitorApiService,
@@ -75,7 +72,6 @@ export class MonitorDetailsFormComponent implements OnInit {
     this.isSaving = false;
     this.didFinishSave = true;
     this.didSaveFail = false;
-    this.shouldShowSaveAlert = true;
     this.afterSaveMessage = 'Monitor saved successfully';
   }
 
@@ -83,12 +79,7 @@ export class MonitorDetailsFormComponent implements OnInit {
     this.isSaving = false;
     this.didFinishSave = true;
     this.didSaveFail = true;
-    this.shouldShowSaveAlert = true;
     this.afterSaveMessage = 'An error occurred during save';
-  }
-
-  private saveAlertIsVisible(): boolean {
-    return !this.isSaving && this.didFinishSave && !this.isReadOnly && this.shouldShowSaveAlert;
   }
 
 }
