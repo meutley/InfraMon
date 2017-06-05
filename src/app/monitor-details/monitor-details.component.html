@@ -1,5 +1,5 @@
 <div *ngIf="isLoading && !didLoadingFail">
-  Loading the monitor details...
+  Loading monitor details...
 </div>
 <div *ngIf="!isLoading && didLoadingFail">
   <span class="text-danger">Failed to load monitor details.</span>
@@ -15,7 +15,7 @@
       </div>
       <div id="details-form-collapse" class="panel-collapse collapse in">
         <div class="panel-body">
-          <app-monitor-details-form [monitor]="monitor" [isReadOnly]="!isEditing"></app-monitor-details-form>
+          <app-monitor-details-form [monitor]="monitor" [isReadOnly]="!isEditing" [shouldShowSaveAlert]="shouldShowSaveAlert"></app-monitor-details-form>
         </div>
       </div>
     </div>

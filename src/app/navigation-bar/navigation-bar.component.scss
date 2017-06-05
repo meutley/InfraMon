@@ -2,22 +2,24 @@
 
 $navbar-background: $gray;
 $navbar-border: 0;
+$navbar-border-radius: 0;
 
 $navbar-link-base-color: $white;
-$navbar-link-hover-background: $orange;
-$navbar-link-active-background: $green;
+$navbar-link-hover-background: $blue;
+$navbar-link-active-background: $white;
+$navbar-link-active-text: $gray;
 
 .navbar  {
     background: $navbar-background;
     border: $navbar-border;
+    border-radius: $navbar-border-radius;
 
     .nav {
         &.navbar-nav {
             li {
                 a {
                     transition: background 0.1s;
-                    color: $navbar-link-base-color;
-                    font-weight: bold;
+                    color: $navbar-link-base-color !important;
                     font-size: 110%;
 
                     &:hover {
@@ -28,6 +30,7 @@ $navbar-link-active-background: $green;
                 &.active {
                     a {
                         background: $navbar-link-active-background;
+                        color: $navbar-link-active-text !important;
                     }
                 }
             }

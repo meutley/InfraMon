@@ -20,6 +20,7 @@ export class MonitorDetailsComponent implements OnDestroy, OnInit {
   private didLoadingFail: boolean;
 
   private isEditing: boolean;
+  private shouldShowSaveAlert: boolean;
 
   constructor(private route: ActivatedRoute, private monitorApiService: MonitorApiService) {
   }
@@ -56,6 +57,9 @@ export class MonitorDetailsComponent implements OnDestroy, OnInit {
 
   private onClickEditButton() {
     this.isEditing = !this.isEditing;
+    if (!this.isEditing) {
+      this.shouldShowSaveAlert = false;
+    }
   }
 
 }

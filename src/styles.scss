@@ -5,13 +5,7 @@ body {
 }
 
 a {
-    color: $text-link;
-}
-
-.panel {
-    > .panel-heading {
-        background: $gray-light;
-    }
+    color: $text-link !important;
 }
 
 .btn {
@@ -21,27 +15,19 @@ a {
 }
 
 .alert {
-    &.alert-success {
-        background: $alert-success-bg;
-        border-color: $alert-success-border;
-        color: $alert-success-text;
-    }
-
-    &.alert-info {
-        background: $alert-info-bg;
-        border-color: $alert-info-border;
-        color: $alert-info-text;
-    }
-
     &.alert-warning {
         background: $alert-warning-bg;
         border-color: $alert-warning-border;
         color: $alert-warning-text;
     }
+}
 
-    &.alert-danger {
-        background: $alert-danger-bg;
-        border-color: $alert-danger-border;
-        color: $alert-danger-text;
+.panel {
+    .panel-heading {
+        .panel-title {
+            a {
+                color: $gray-dark !important;
+            }
+        }
     }
 }
