@@ -1,7 +1,47 @@
-.panel > .panel-heading {
-    background: #f8f8f8;
+@import "style-globals.scss";
+
+body {
+    color: $gray !important;
 }
 
-.btn.btn-primary {
-    background-color: #2261b5;
+a {
+    color: $text-link;
+}
+
+.panel {
+    > .panel-heading {
+        background: $gray-light;
+    }
+}
+
+.btn {
+    &.btn-primary {
+        background-color: $blue;
+    }
+}
+
+.alert {
+    &.alert-success {
+        background: $alert-success-bg;
+        border-color: $alert-success-border;
+        color: $alert-success-text;
+    }
+
+    &.alert-info {
+        background: $alert-info-bg;
+        border-color: $alert-info-border;
+        color: $alert-info-text;
+    }
+
+    &.alert-warning {
+        background: $alert-warning-bg;
+        border-color: $alert-warning-border;
+        color: $alert-warning-text;
+    }
+
+    &.alert-danger {
+        background: $alert-danger-bg;
+        border-color: $alert-danger-border;
+        color: $alert-danger-text;
+    }
 }
