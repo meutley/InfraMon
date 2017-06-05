@@ -10,7 +10,7 @@ import { WebRequest } from '../../models/web-request';
 @Component({
   selector: 'app-web-request-details',
   templateUrl: './web-request-details.component.html',
-  styleUrls: ['./web-request-details.component.css']
+  styleUrls: ['./web-request-details.component.scss']
 })
 export class WebRequestDetailsComponent implements OnInit {
 

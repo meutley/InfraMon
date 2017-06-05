@@ -11,7 +11,7 @@ import { MonitorValidatorService } from '../services/monitor-validator/monitor-v
 @Component({
   selector: 'app-monitor-details-form',
   templateUrl: './monitor-details-form.component.html',
-  styleUrls: ['./monitor-details-form.component.css']
+  styleUrls: ['./monitor-details-form.component.scss']
 })
 export class MonitorDetailsFormComponent implements OnInit {
 
