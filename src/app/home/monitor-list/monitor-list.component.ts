@@ -17,6 +17,10 @@ export class MonitorListComponent implements OnInit {
   private responseStatusCode: any;
   private monitors: Monitor[];
 
+  private didDeleteMonitorFail: boolean;
+  private shouldShowDeleteMonitorAlert: boolean;
+  private deleteMonitorAlertText: string;
+
   constructor(private monitorApiService: MonitorApiService) {
   }
 
@@ -67,10 +71,23 @@ export class MonitorListComponent implements OnInit {
     this.monitorApiService
       .deleteMonitor(monitor.id)
       .subscribe(data => {
+        this.shouldShowDeleteMonitorAlert = true;
+        this.didDeleteMonitorFail = false;
+        this.deleteMonitorAlertText = 'Monitor deleted successfully.';
+
         this.loadMonitors();
       }, err => {
-
+        this.shouldShowDeleteMonitorAlert = true;
+        this.didDeleteMonitorFail = true;
+        this.deleteMonitorAlertText = 'Error occurred when deleting monitor.';
       });
+  }
+
+  private shouldDisplayDeleteMonitorAlertText(): boolean {
+    return this.shouldShowDeleteMonitorAlert === true
+      && this.deleteMonitorAlertText !== null
+      && this.deleteMonitorAlertText !== undefined
+      && this.deleteMonitorAlertText.length > 0;
   }
 
 }

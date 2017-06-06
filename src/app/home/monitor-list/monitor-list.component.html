@@ -5,6 +5,9 @@
 <div *ngIf="!isLoading && didLoadingFail">
   <span class="text-danger">Loading active monitors failed</span>
 </div>
+<div *ngIf="shouldDisplayDeleteMonitorAlertText()" [ngClass]="{'alert': true, 'alert-success': !didDeleteFail, 'alert-danger': didDeleteFail}">
+  {{deleteMonitorAlertText}}
+</div>
 <div *ngIf="!isLoading && !didLoadingFail && !hasMonitors()" class="alert alert-warning">
   No monitors available. <a [routerLink]="['/new-monitor']">Create one now.</a>
 </div>

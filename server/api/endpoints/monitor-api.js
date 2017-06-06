@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const httpStatusCodes = require('../../http-status-codes');
 const responseUtility = require('../../utilities/response-utility');
 
 const mockData = require('../data/mock-data');
@@ -23,16 +24,16 @@ const getMonitorById = function (monitors, id, callback) {
 router.get('/:id?', (req, res) => {
     const id = req.params.id;
     if (!id) {    // No id specified; return all data
-        responseUtility.sendResponse(res, 200, mockData.monitors);
+        responseUtility.sendResponse(res, httpStatusCodes.OK, mockData.monitors);
     } else {    // Return a monitor by id
         getMonitorById(
             mockData.monitors,
             id,
             (monitor) => {
                 if (monitor) {
-                    responseUtility.sendResponse(res, 200, monitor);
+                    responseUtility.sendResponse(res, httpStatusCodes.OK, monitor);
                 } else {
-                    responseUtility.sendResponse(res, 404);
+                    responseUtility.sendResponse(res, httpStatusCodes.NOT_FOUND);
                 }
             });
     }
@@ -40,22 +41,25 @@ router.get('/:id?', (req, res) => {
 
 router.post('/create', (req, res) => {
     mockData.monitors.push(req.body);
-    responseUtility.sendResponse(res, 200);
+    responseUtility.sendResponse(res, httpStatusCodes.OK_NO_CONTENT);
 });
 
 router.post('/update/:id', (req, res) => {
-    responseUtility.sendResponse(res, 200);
+    responseUtility.sendResponse(res, httpStatusCodes.OK_NO_CONTENT);
 });
 
 router.delete('/delete/:id', (req, res) => {
     const id = req.params.id;
     if (!id) {
-        responseUtility.sendResponse(res, 400);
+        responseUtility.sendResponse(res, httpStatusCodes.BAD_REQUEST);
     } else {
         const removeIndex = mockData.monitors.map((item) => { return item.id; }).indexOf(id);
-        mockData.monitors.splice(removeIndex, 1);
-
-        responseUtility.sendResponse(res, 200);
+        if (removeIndex && removeIndex >= 0) {
+            mockData.monitors.splice(removeIndex, 1);
+            responseUtility.sendResponse(res, httpStatusCodes.OK_NO_CONTENT);
+        } else {
+            responseUtility.sendResponse(res, httpStatusCodes.NOT_FOUND);
+        }
     }
 });
 

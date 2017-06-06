@@ -44,7 +44,7 @@ export class MonitorApiService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const requestBody = JSON.stringify(monitor)
+    const requestBody = JSON.stringify(monitor);
 
     return this.http.post(url, requestBody, { headers: headers })
       .map((res: Response) => res)
