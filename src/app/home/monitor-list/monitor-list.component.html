@@ -8,8 +8,25 @@
 <div *ngIf="!hasMonitors()" class="alert alert-warning">
   No monitors available. <a [routerLink]="['/new-monitor']">Create one now.</a>
 </div>
-<ul id="monitor-list" *ngIf="shouldListMonitors()">
-  <li *ngFor="let monitor of monitors">
-    <app-monitor-list-item [monitor]="monitor"></app-monitor-list-item>
-  </li>
-</ul>
+<table *ngIf="shouldListMonitors()" class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Frequency</th>
+      <th>Is Active?</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let monitor of monitors">
+      <td>{{monitor.name}}</td>
+      <td>{{monitor.type}}</td>
+      <td>Every {{monitor.frequencyAmount}} {{monitor.frequencyPeriod}}</td>
+      <td>{{getIsActiveText(monitor)}}</td>
+      <td><a [routerLink]="['/monitor-details/' + monitor.id]">Edit</a></td>
+      <td><a href="#" (click)="deleteMonitor(monitor)">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

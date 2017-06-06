@@ -21,15 +21,18 @@ export class MonitorListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadMonitors();
+  }
+
+  private loadMonitors() {
     this.isLoading = true;
-    const self = this;
 
     this.monitorApiService
       .getMonitors()
       .subscribe(data => {
-        self.finishLoading(data);
+        this.finishLoading(data);
       }, err => {
-        self.onLoadError(err);
+        this.onLoadError(err);
       });
   }
 
@@ -54,6 +57,20 @@ export class MonitorListComponent implements OnInit {
       && !this.didLoadingFail
       && this.monitors
       && this.monitors.length > 0;
+  }
+
+  private getIsActiveText(monitor: Monitor): string {
+    return monitor.isActive === true ? 'Yes' : 'No';
+  }
+
+  private deleteMonitor(monitor: Monitor) {
+    this.monitorApiService
+      .deleteMonitor(monitor.id)
+      .subscribe(data => {
+        this.loadMonitors();
+      }, err => {
+
+      });
   }
 
 }
