@@ -13,6 +13,7 @@ export class NewMonitorComponent implements OnInit {
 
   constructor() {
     this.monitor = new Monitor();
+    this.monitor.isActive = true;
   }
 
   ngOnInit() {

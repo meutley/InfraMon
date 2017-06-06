@@ -47,6 +47,18 @@ router.post('/update/:id', (req, res) => {
     responseUtility.sendResponse(res, 200);
 });
 
+router.delete('/delete/:id', (req, res) => {
+    const id = req.params.id;
+    if (!id) {
+        responseUtility.sendResponse(res, 400);
+    } else {
+        const removeIndex = mockData.monitors.map((item) => { return item.id; }).indexOf(id);
+        mockData.monitors.splice(removeIndex, 1);
+
+        responseUtility.sendResponse(res, 200);
+    }
+});
+
 module.exports = {
     path: '/api/monitor',
     router: router

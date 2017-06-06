@@ -40,8 +40,11 @@
         </select>
         <p *ngIf="isReadOnly">{{monitor.frequencyPeriod}}</p>
       </div>
-      <div class="form-group" *ngIf="!isReadOnly">
+    </fieldset>
+    <div class="form-group">
+      <label><input type="checkbox" name="inputIsActive" id="inputIsActive" [disabled]="isSaving || isReadOnly" [(ngModel)]="monitor.isActive"/> Is Active?</label>
+    </div>
+    <div class="form-group" *ngIf="!isReadOnly">
         <input type="button" class="btn btn-primary" value="Save" [disabled]="!canSave()" (click)="doSave()"/>
       </div>
-    </fieldset>
 </form>

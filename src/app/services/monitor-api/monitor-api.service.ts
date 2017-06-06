@@ -51,6 +51,14 @@ export class MonitorApiService {
       .catch((err: any) => Observable.throw(err || 'Server error'));
   }
 
+  deleteMonitor(id: number): Observable<any> {
+    const url = this.urlBuilderService.build(AppSettings.MONITOR_API_URL, 'delete', id.toString());
+
+    return this.http.delete(url)
+      .map((res: Response) => res)
+      .catch((err: any) => Observable.throw(err || 'Server error'));
+  }
+
   private extractMonitor(response: Response): Monitor {
     const monitor = response.json();
 

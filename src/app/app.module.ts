@@ -21,6 +21,7 @@ import { NewMonitorComponent } from './new-monitor/new-monitor.component';
 import { MonitorDetailsFormComponent } from './monitor-details-form/monitor-details-form.component';
 import { WebRequestDetailsComponent } from './monitor-details-form/web-request-details/web-request-details.component';
 import { PingDetailsComponent } from './monitor-details-form/ping-details/ping-details.component';
+import { MonitorListRowComponent } from './home/monitor-list/monitor-list-row/monitor-list-row.component';
 
 const AppRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -39,7 +40,8 @@ const AppRoutes: Routes = [
     NewMonitorComponent,
     MonitorDetailsFormComponent,
     WebRequestDetailsComponent,
-    PingDetailsComponent
+    PingDetailsComponent,
+    MonitorListRowComponent
   ],
   imports: [
     BrowserModule,

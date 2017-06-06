@@ -9,6 +9,7 @@ export class Monitor {
     pingDetails: Ping;
     frequencyAmount: number;
     frequencyPeriod: string;
+    isActive: boolean;
 
     constructor() {
         this.id = 0;
