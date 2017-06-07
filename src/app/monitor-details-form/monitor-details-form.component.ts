@@ -41,7 +41,7 @@ export class MonitorDetailsFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isNew = this.monitor.id === 0;
+    this.isNew = this.monitor._id === '';
   }
 
   private isWebRequestType(): boolean {
@@ -62,7 +62,7 @@ export class MonitorDetailsFormComponent implements OnInit {
     this.monitorApiService
       .saveMonitor(this.monitor)
       .subscribe(res => {
-        this.handleSuccessfulSave(res);
+        this.handleSuccessfulSave(JSON.parse(res._body));
       }, err => {
         this.handleErrorOnSave(err);
       });
@@ -73,6 +73,11 @@ export class MonitorDetailsFormComponent implements OnInit {
     this.didFinishSave = true;
     this.didSaveFail = false;
     this.afterSaveMessage = 'Monitor saved successfully';
+
+    if (this.isNew) {
+      const newId = res._id;
+      this.router.navigateByUrl('/monitor-details/' + newId);
+    }
   }
 
   private handleErrorOnSave(err: any) {

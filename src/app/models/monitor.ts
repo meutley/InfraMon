@@ -2,7 +2,7 @@ import { WebRequest } from './web-request';
 import { Ping } from './ping';
 
 export class Monitor {
-    id: number;
+    _id: string;
     name: string;
     type: string;
     webRequestDetails: WebRequest;
@@ -12,7 +12,10 @@ export class Monitor {
     isActive: boolean;
 
     constructor() {
-        this.id = 0;
+        this._id = '';
+        this.name = '';
+        this.type = '';
+        this.frequencyPeriod = '';
         this.webRequestDetails = new WebRequest();
         this.pingDetails = new Ping();
     }

@@ -12,7 +12,7 @@ import { Monitor } from '../models/monitor';
 })
 export class MonitorDetailsComponent implements OnDestroy, OnInit {
 
-  private id: number;
+  private id: string;
   private sub: any;
   private monitor: Monitor;
 
@@ -27,7 +27,7 @@ export class MonitorDetailsComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id'];
+      this.id = params['id'];
       this.loadMonitorDetails();
     });
   }

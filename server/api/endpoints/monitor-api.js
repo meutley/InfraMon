@@ -5,6 +5,7 @@ const httpStatusCodes = require('../../http-status-codes');
 const responseUtility = require('../../utilities/response-utility');
 
 const mockData = require('../data/mock-data');
+const monitorRepository = require('../data/monitor-repository');
 
 const getMonitorById = function (monitors, id, callback) {
     const results = monitors.filter((monitor) => {
@@ -40,8 +41,13 @@ router.get('/:id?', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-    mockData.monitors.push(req.body);
-    responseUtility.sendResponse(res, httpStatusCodes.OK_NO_CONTENT);
+    const monitor = req.body;
+    const id = monitorRepository.create(monitor,
+        (id) => {
+            responseUtility.sendResponse(res, httpStatusCodes.OK, id);
+        }, (err) => {
+            responseUtility.sendResponse(res, httpStatusCodes.INTERNAL_SERVER_ERROR);
+        });
 });
 
 router.post('/update/:id', (req, res) => {

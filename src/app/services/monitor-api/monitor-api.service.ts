@@ -17,8 +17,8 @@ export class MonitorApiService {
   constructor(private http: Http, private urlBuilderService: UrlBuilderService) {
   }
 
-  getMonitor(id: number): Observable<Monitor> {
-    const url = this.urlBuilderService.build(AppSettings.MONITOR_API_URL, id.toString());
+  getMonitor(id: string): Observable<Monitor> {
+    const url = this.urlBuilderService.build(AppSettings.MONITOR_API_URL, id);
 
     return this.http.get(url)
       .map(this.extractMonitor)
@@ -34,12 +34,12 @@ export class MonitorApiService {
   }
 
   saveMonitor(monitor: Monitor): Observable<any> {
-    const isNew = monitor.id === 0;
+    const isNew = monitor._id.length === 0;
     const method = isNew ? 'create' : 'update';
     const url =
       isNew
       ? this.urlBuilderService.build(AppSettings.MONITOR_API_URL, method)
-      : this.urlBuilderService.build(AppSettings.MONITOR_API_URL, method, monitor.id.toString());
+      : this.urlBuilderService.build(AppSettings.MONITOR_API_URL, method, monitor._id);
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -51,8 +51,8 @@ export class MonitorApiService {
       .catch((err: any) => Observable.throw(err || 'Server error'));
   }
 
-  deleteMonitor(id: number): Observable<any> {
-    const url = this.urlBuilderService.build(AppSettings.MONITOR_API_URL, 'delete', id.toString());
+  deleteMonitor(id: string): Observable<any> {
+    const url = this.urlBuilderService.build(AppSettings.MONITOR_API_URL, 'delete', id);
 
     return this.http.delete(url)
       .map((res: Response) => res)

@@ -69,7 +69,7 @@ export class MonitorListComponent implements OnInit {
 
   private deleteMonitor(monitor: Monitor) {
     this.monitorApiService
-      .deleteMonitor(monitor.id)
+      .deleteMonitor(monitor._id)
       .subscribe(data => {
         this.shouldShowDeleteMonitorAlert = true;
         this.didDeleteMonitorFail = false;
