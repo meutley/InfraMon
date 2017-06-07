@@ -71,6 +71,7 @@ export class MonitorListComponent implements OnInit {
     this.monitorApiService
       .deleteMonitor(monitor._id)
       .subscribe(data => {
+        console.log('deleted');
         this.shouldShowDeleteMonitorAlert = true;
         this.didDeleteMonitorFail = false;
         this.deleteMonitorAlertText = 'Monitor deleted successfully.';

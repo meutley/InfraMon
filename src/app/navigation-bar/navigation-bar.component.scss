@@ -2,17 +2,19 @@
 
 $navbar-background: $gray;
 $navbar-border: 0;
-$navbar-border-radius: 0;
+$navbar-border-radius: 5px;
 
 $navbar-link-base-color: $white;
-$navbar-link-hover-background: $slate;
-$navbar-link-active-background: $white;
-$navbar-link-active-text: $gray;
+$navbar-link-hover-background: $orange;
+$navbar-link-active-background: $blue;
+$navbar-link-active-text: $white;
 
 .navbar  {
     background: $navbar-background;
     border: $navbar-border;
-    border-radius: $navbar-border-radius;
+    border-radius: 0;
+    border-bottom-left-radius: $navbar-border-radius;
+    border-bottom-right-radius: $navbar-border-radius;
 
     .nav {
         &.navbar-nav {

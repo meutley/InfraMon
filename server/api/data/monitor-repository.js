@@ -38,7 +38,7 @@ const _getById = function (id, success, failure) {
                 });
         });
     } catch (ex) {
-        _callbackWithData(failure, ex);
+        _callbackWithData(failure, data);
     }
 }
 
@@ -53,9 +53,7 @@ const _getAll = function (success, failure) {
                 });
         });
     } catch (ex) {
-        if (typeof failure === 'function') {
-            failure(ex);
-        }
+        _callbackWithData(failure, data);
     }
 }
 
@@ -70,14 +68,13 @@ const _delete = function (id, success, failure) {
                 });
         });
     } catch (ex) {
-        if (typeof failure === 'function') {
-            failure(ex);
-        }
+        _callbackWithData(failure, data);
     }
 }
 
 module.exports = {
     create: _create,
     getAll: _getAll,
-    getById: _getById
+    getById: _getById,
+    delete: _delete
 };

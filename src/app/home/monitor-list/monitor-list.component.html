@@ -5,7 +5,7 @@
 <div *ngIf="!isLoading && didLoadingFail">
   <span class="text-danger">Loading active monitors failed</span>
 </div>
-<div *ngIf="shouldDisplayDeleteMonitorAlertText()" [ngClass]="{'alert': true, 'alert-success': !didDeleteFail, 'alert-danger': didDeleteFail}">
+<div *ngIf="shouldDisplayDeleteMonitorAlertText()" [ngClass]="{'alert': true, 'alert-success': !didDeleteMonitorFail, 'alert-danger': didDeleteMonitorFail}">
   {{deleteMonitorAlertText}}
 </div>
 <div *ngIf="!isLoading && !didLoadingFail && !hasMonitors()" class="alert alert-warning">

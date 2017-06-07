@@ -1,13 +1,13 @@
 module.exports = {
     fromModel: function (model) {
         return {
-            name: monitor.name,
-            type: monitor.type,
-            webRequestDetails: monitor.webRequestDetails,
-            pingDetails: monitor.pingDetails,
-            frequencyAmount: monitor.frequencyAmount,
-            frequencyPeriod: monitor.frequencyPeriod,
-            isActive: monitor.isActive
+            name: model.name,
+            type: model.type,
+            webRequestDetails: model.webRequestDetails,
+            pingDetails: model.pingDetails,
+            frequencyAmount: model.frequencyAmount,
+            frequencyPeriod: model.frequencyPeriod,
+            isActive: model.isActive
         };
     }
 }

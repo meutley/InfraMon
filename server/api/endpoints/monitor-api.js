@@ -43,11 +43,15 @@ router.delete('/delete/:id', (req, res) => {
     if (!id) {
         responseUtility.sendResponse(res, httpStatusCodes.BAD_REQUEST);
     } else {
-        monitorRepository.delete(id, (res) => {
-            responseUtility.sendResponse(res, httpStatusCodes.OK_NO_CONTENT);
-        }, (err) => {
+        try {
+            monitorRepository.delete(id, (data) => {
+                responseUtility.sendResponse(res, httpStatusCodes.OK_NO_CONTENT);
+            }, (err) => {
+                responseUtility.sendResponse(res, httpStatusCodes.INTERNAL_SERVER_ERROR);
+            });
+        } catch (ex) {
             responseUtility.sendResponse(res, httpStatusCodes.INTERNAL_SERVER_ERROR);
-        });
+        }
     }
 });
 
