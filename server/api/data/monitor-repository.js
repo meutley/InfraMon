@@ -2,7 +2,7 @@ const mongoData = require('./mongo-data');
 const mongoProvider = require('./mongo-provider');
 const ObjectID = require('mongodb').ObjectID;
 
-const monitorMapping = require('./model-mapping').monitorMapping;
+const monitorMapping = require('./mapping/model-mapping').monitorMapping;
 
 const _callbackWithData = function (action, data) {
     if (typeof action === 'function') {

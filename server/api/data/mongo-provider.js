@@ -1,3 +1,5 @@
+const ObjectID = require('mongodb').ObjectID;
+
 const _get = function (db, collectionName) {
     return {
         insertOne: function (model, success, failure) {

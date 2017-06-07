@@ -59,6 +59,7 @@ export class MonitorDetailsComponent implements OnDestroy, OnInit {
     this.isEditing = !this.isEditing;
     if (!this.isEditing) {
       this.shouldShowSaveAlert = false;
+      this.loadMonitorDetails();
     }
   }
 
