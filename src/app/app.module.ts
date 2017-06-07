@@ -15,13 +15,11 @@ import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { HomeComponent } from './home/home.component';
 import { MonitorListComponent } from './home/monitor-list/monitor-list.component';
-import { MonitorListItemComponent } from './home/monitor-list/monitor-list-item/monitor-list-item.component';
 import { MonitorDetailsComponent } from './monitor-details/monitor-details.component';
 import { NewMonitorComponent } from './new-monitor/new-monitor.component';
 import { MonitorDetailsFormComponent } from './monitor-details-form/monitor-details-form.component';
 import { WebRequestDetailsComponent } from './monitor-details-form/web-request-details/web-request-details.component';
 import { PingDetailsComponent } from './monitor-details-form/ping-details/ping-details.component';
-import { MonitorListRowComponent } from './home/monitor-list/monitor-list-row/monitor-list-row.component';
 
 const AppRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -35,13 +33,11 @@ const AppRoutes: Routes = [
     NavigationBarComponent,
     HomeComponent,
     MonitorListComponent,
-    MonitorListItemComponent,
     MonitorDetailsComponent,
     NewMonitorComponent,
     MonitorDetailsFormComponent,
     WebRequestDetailsComponent,
-    PingDetailsComponent,
-    MonitorListRowComponent
+    PingDetailsComponent
   ],
   imports: [
     BrowserModule,
