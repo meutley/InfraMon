@@ -4,7 +4,7 @@ const router = express.Router();
 const httpStatusCodes = require('../../http-status-codes');
 const responseUtility = require('../../utilities/response-utility');
 
-const monitorRepository = require('../data/monitor-repository');
+const monitorRepository = require('../../data/monitor-repository');
 
 router.get('/:id?', (req, res) => {
     const id = req.params.id;

@@ -1,5 +1,5 @@
-const mongoData = require('./mongo-data');
-const mongoProvider = require('./mongo-provider');
+const dataUtility = require('./mongo-data');
+const dataProvider = require('./mongo-provider');
 const ObjectID = require('mongodb').ObjectID;
 
 const monitorMapping = require('./mapping/model-mapping').monitorMapping;
@@ -14,8 +14,8 @@ const _create = function (monitor, success, failure) {
     const model = monitorMapping.fromModel(monitor);
 
     try {
-        mongoData.doWithConnection((db) => {
-            mongoProvider.get(db, 'monitors')
+        dataUtility.doWithConnection((db) => {
+            dataProvider.get(db, 'monitors')
                 .insertOne(model, (data) => {
                     _callbackWithData(success, model);
                 }, (err) => {
@@ -29,8 +29,8 @@ const _create = function (monitor, success, failure) {
 
 const _getById = function (id, success, failure) {
     try {
-        mongoData.doWithConnection((db) => {
-            mongoProvider.get(db, 'monitors')
+        dataUtility.doWithConnection((db) => {
+            dataProvider.get(db, 'monitors')
                 .getById(id, (data) => {
                     _callbackWithData(success, data);
                 }, (err) => {
@@ -44,8 +44,8 @@ const _getById = function (id, success, failure) {
 
 const _getAll = function (success, failure) {
     try {
-        mongoData.doWithConnection((db) => {
-            mongoProvider.get(db, 'monitors')
+        dataUtility.doWithConnection((db) => {
+            dataProvider.get(db, 'monitors')
                 .getAll((data) => {
                     _callbackWithData(success, data);
                 }, (err) => {
@@ -59,8 +59,8 @@ const _getAll = function (success, failure) {
 
 const _delete = function (id, success, failure) {
     try {
-        mongoData.doWithConnection((db) => {
-            mongoProvider.get(db, 'monitors')
+        dataUtility.doWithConnection((db) => {
+            dataProvider.get(db, 'monitors')
                 .delete(id, (data) => {
                     _callbackWithData(success, data);
                 }, (err) => {

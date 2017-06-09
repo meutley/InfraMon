@@ -1,8 +1,9 @@
 const MongoClient = require('mongodb').MongoClient;
+const config = require('../services/config-service').getConfig();
 
 const _doWithConnection = function (action) {
     if (typeof action === 'function') {
-        MongoClient.connect('mongodb://localhost', (err, db) => {
+        MongoClient.connect(config.database.server, (err, db) => {
             action(db);
         });
     }
