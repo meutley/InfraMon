@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { Ping } from '../../models/ping';
 
 @Component({
   selector: 'app-ping-details',
@@ -7,7 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PingDetailsComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  pingDetails: Ping;
+
+  @Input()
+  isSaving: boolean;
+
+  @Input()
+  isReadOnly: boolean;
+
+  constructor() {
+    this.isReadOnly = false;
+  }
 
   ngOnInit() {
   }

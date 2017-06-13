@@ -8,7 +8,7 @@ export class PingTypeValidatorService {
   constructor() { }
 
   validate(ping: Ping): boolean {
-    return true;
+    return (ping.hostAddress !== null && ping.hostAddress !== undefined && ping.hostAddress.length > 0);
   }
 
 }

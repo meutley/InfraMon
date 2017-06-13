@@ -1,3 +1,8 @@
-<p>
-  ping-details works!
-</p>
+<fieldset>
+  <legend>Ping Details</legend>
+  <div class="form-group">
+    <label for="inputAddress">Address (URL or IP Address)</label>
+    <input *ngIf="!isReadOnly" type="text" class="form-control" id="inputAddress" name="inputAddress" placeholder="Address (URL or IP Address)" [disabled]="isSaving" [(ngModel)]="pingDetails.hostAddress"/>
+    <p *ngIf="isReadOnly">{{pingDetails.hostAddress}}</p>
+  </div>
+</fieldset>
