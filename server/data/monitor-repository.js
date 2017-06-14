@@ -38,7 +38,7 @@ const _getById = function (id, success, failure) {
                 });
         });
     } catch (ex) {
-        _callbackWithData(failure, data);
+        _callbackWithData(failure, ex);
     }
 }
 
@@ -53,7 +53,7 @@ const _getAll = function (success, failure) {
                 });
         });
     } catch (ex) {
-        _callbackWithData(failure, data);
+        _callbackWithData(failure, ex);
     }
 }
 
@@ -64,11 +64,28 @@ const _delete = function (id, success, failure) {
                 .delete(id, (data) => {
                     _callbackWithData(success, data);
                 }, (err) => {
-                    _callbackWithData(failure, data);
+                    _callbackWithData(failure, err);
                 });
         });
     } catch (ex) {
-        _callbackWithData(failure, data);
+        _callbackWithData(failure, ex);
+    }
+}
+
+const _update = function (id, monitor, success, failure) {
+    const model = monitorMapping.fromModel(monitor);
+    
+    try {
+        dataUtility.doWithConnection((db) => {
+            dataProvider.get(db, 'monitors')
+                .updateOne(id, model, () => {
+                    _callbackWithData(success, null);
+                }, (err) => {
+                    _callbackWithData(failure, err);
+                });
+        });
+    } catch (ex) {
+        _callbackWithData(failure, ex);
     }
 }
 
@@ -76,5 +93,6 @@ module.exports = {
     create: _create,
     getAll: _getAll,
     getById: _getById,
-    delete: _delete
+    delete: _delete,
+    update: _update
 };

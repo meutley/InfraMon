@@ -13,7 +13,8 @@ import { Monitor } from '../models/monitor';
 export class MonitorDetailsComponent implements OnDestroy, OnInit {
 
   private id: string;
-  private sub: any;
+  private routeParamsSub: any;
+  private queryParamsSub: any;
   private monitor: Monitor;
 
   private isLoading: boolean;
@@ -26,14 +27,19 @@ export class MonitorDetailsComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.routeParamsSub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this.loadMonitorDetails();
+    });
+
+    this.queryParamsSub = this.route.queryParams.subscribe(params => {
+      this.isEditing = params['edit'] && params['edit'] === '1';
     });
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.routeParamsSub.unsubscribe();
+    this.queryParamsSub.unsubscribe();
   }
 
   private loadMonitorDetails() {

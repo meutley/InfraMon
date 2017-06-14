@@ -35,7 +35,14 @@ router.post('/create', (req, res) => {
 });
 
 router.post('/update/:id', (req, res) => {
-    responseUtility.sendResponse(res, httpStatusCodes.OK_NO_CONTENT);
+    const id = req.params.id;
+    const monitor = req.body;
+    monitorRepository.update(id, monitor,
+        () => {
+            responseUtility.sendResponse(res, httpStatusCodes.OK_NO_CONTENT);
+        }, (err) => {
+            responseUtility.sendResponse(res, httpStatusCodes.INTERNAL_SERVER_ERROR);
+        });
 });
 
 router.delete('/delete/:id', (req, res) => {
