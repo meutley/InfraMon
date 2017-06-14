@@ -68,20 +68,22 @@ export class MonitorListComponent implements OnInit {
   }
 
   private deleteMonitor(monitor: Monitor) {
-    this.monitorApiService
-      .deleteMonitor(monitor._id)
-      .subscribe(data => {
-        console.log('deleted');
-        this.shouldShowDeleteMonitorAlert = true;
-        this.didDeleteMonitorFail = false;
-        this.deleteMonitorAlertText = 'Monitor deleted successfully.';
+    if (confirm('Are you sure you want to delete this monitor?')) {
+      this.monitorApiService
+        .deleteMonitor(monitor._id)
+        .subscribe(data => {
+          console.log('deleted');
+          this.shouldShowDeleteMonitorAlert = true;
+          this.didDeleteMonitorFail = false;
+          this.deleteMonitorAlertText = 'Monitor deleted successfully.';
 
-        this.loadMonitors();
-      }, err => {
-        this.shouldShowDeleteMonitorAlert = true;
-        this.didDeleteMonitorFail = true;
-        this.deleteMonitorAlertText = 'Error occurred when deleting monitor.';
-      });
+          this.loadMonitors();
+        }, err => {
+          this.shouldShowDeleteMonitorAlert = true;
+          this.didDeleteMonitorFail = true;
+          this.deleteMonitorAlertText = 'Error occurred when deleting monitor.';
+        });
+    }
   }
 
   private shouldDisplayDeleteMonitorAlertText(): boolean {

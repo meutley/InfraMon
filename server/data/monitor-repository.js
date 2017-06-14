@@ -21,6 +21,10 @@ const _create = function (monitor, success, failure) {
                 }, (err) => {
                     _callbackWithData(failure, err);
                 });
+            
+            if (db) {
+                db.close();
+            }
         });
     } catch (ex) {
         _callbackWithData(failure, ex);
@@ -36,6 +40,10 @@ const _getById = function (id, success, failure) {
                 }, (err) => {
                     _callbackWithData(failure, err);
                 });
+            
+            if (db) {
+                db.close();
+            }
         });
     } catch (ex) {
         _callbackWithData(failure, ex);
@@ -51,6 +59,10 @@ const _getAll = function (success, failure) {
                 }, (err) => {
                     _callbackWithData(failure, err);
                 });
+            
+            if (db) {
+                db.close();
+            }
         });
     } catch (ex) {
         _callbackWithData(failure, ex);
@@ -66,6 +78,10 @@ const _delete = function (id, success, failure) {
                 }, (err) => {
                     _callbackWithData(failure, err);
                 });
+            
+            if (db) {
+                db.close();
+            }
         });
     } catch (ex) {
         _callbackWithData(failure, ex);

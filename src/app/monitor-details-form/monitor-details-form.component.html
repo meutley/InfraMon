@@ -22,7 +22,7 @@
     <app-web-request-details [webRequestDetails]="monitor.webRequestDetails" [isSaving]="isSaving" [isReadOnly]="isReadOnly"></app-web-request-details>
   </div>
   <div *ngIf="isPingType()" class="form-group">
-    <app-ping-details></app-ping-details>
+    <app-ping-details [pingDetails]="monitor.pingDetails" [isSaving]="isSaving" [isReadOnly]="isReadOnly"></app-ping-details>
   </div>
   <fieldset>
     <legend>Frequency (e.g. every 5 minutes)</legend>
