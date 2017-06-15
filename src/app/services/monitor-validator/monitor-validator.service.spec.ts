@@ -23,7 +23,7 @@ describe('MonitorValidatorService', () => {
    pingTypeValidatorService: PingTypeValidatorService,
    webRequestTypeValidatorService: WebRequestTypeValidatorService) => {
     const monitor = new Monitor();
-    monitor.id = 1;
+    monitor._id = '1';
     monitor.name = 'Test';
     monitor.frequencyAmount = 5;
     monitor.frequencyPeriod = 'Seconds';
@@ -37,7 +37,7 @@ describe('MonitorValidatorService', () => {
    pingTypeValidatorService: PingTypeValidatorService,
    webRequestTypeValidatorService: WebRequestTypeValidatorService) => {
     const monitor = new Monitor();
-    monitor.id = 1;
+    monitor._id = '1';
 
     const isValid = service.validate(monitor);
     expect(isValid).toEqual(false);

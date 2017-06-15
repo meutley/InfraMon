@@ -5,7 +5,7 @@ export class UrlBuilderService {
 
   constructor() { }
 
-  build(...parts: string[]) {
+  build(...parts: string[]): string {
     if (parts.length === 0) {
       return '';    // No parts specified
     } else if (parts.length === 1) {
