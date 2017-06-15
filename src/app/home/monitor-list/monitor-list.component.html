@@ -30,6 +30,7 @@
       <td>Every {{monitor.frequencyAmount}} {{monitor.frequencyPeriod}}</td>
       <td>{{getIsActiveText(monitor)}}</td>
       <td><a [routerLink]="['/monitor-details/' + monitor._id]">View</a></td>
+      <td><a [routerLink]="['/monitor-stats/' + monitor._id]">Stats</a></td>
       <td><a [routerLink]="['/monitor-details/' + monitor._id]" [queryParams]="{'edit': '1'}">Edit</a></td>
       <td><a href="#" (click)="deleteMonitor(monitor)">Delete</a></td>
     </tr>

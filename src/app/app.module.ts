@@ -20,11 +20,13 @@ import { NewMonitorComponent } from './new-monitor/new-monitor.component';
 import { MonitorDetailsFormComponent } from './monitor-details-form/monitor-details-form.component';
 import { WebRequestDetailsComponent } from './monitor-details-form/web-request-details/web-request-details.component';
 import { PingDetailsComponent } from './monitor-details-form/ping-details/ping-details.component';
+import { MonitorStatsComponent } from './monitor-stats/monitor-stats.component';
 
 const AppRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'new-monitor', component: NewMonitorComponent },
-    { path: 'monitor-details/:id', component: MonitorDetailsComponent }
+    { path: 'monitor-details/:id', component: MonitorDetailsComponent },
+    { path: 'monitor-stats/:id', component: MonitorStatsComponent }
 ];
 
 @NgModule({
@@ -37,7 +39,8 @@ const AppRoutes: Routes = [
     NewMonitorComponent,
     MonitorDetailsFormComponent,
     WebRequestDetailsComponent,
-    PingDetailsComponent
+    PingDetailsComponent,
+    MonitorStatsComponent
   ],
   imports: [
     BrowserModule,
