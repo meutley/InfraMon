@@ -1,3 +1,19 @@
-<p>
-  monitor-stats works!
-</p>
+<div *ngIf="isLoading && !didLoadingFail">
+  Loading monitor details...
+</div>
+<div *ngIf="!isLoading && didLoadingFail">
+  <span class="text-danger">Failed to load monitor details.</span>
+</div>
+<div *ngIf="!isLoading && !didLoadingFail">
+  <h1>{{monitor.name}}</h1>
+
+  <div *ngIf="isLoadingStatsData && !didLoadingStatsDataFail">
+    Loading monitor stats data...
+  </div>
+  <div *ngIf="!isLoadingStatsData && didLoadingStatsDataFail">
+    <span class="text-danger">Failed to load monitor stats data.</span>
+  </div>
+  <div *ngIf="!isLoadingStatsData && !didLoadingStatsDataFail">
+    Stats Display
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MonitorApiService } from './services/monitor-api/monitor-api.service';
+import { MonitorDataApiService } from './services/monitor-data-api/monitor-data-api.service';
 import { UrlBuilderService } from './services/url-builder/url-builder.service';
 import { WebRequestTestService } from './services/web-request-test/web-request-test.service';
 import { MonitorValidatorService } from './services/monitor-validator/monitor-validator.service';
@@ -50,6 +51,7 @@ const AppRoutes: Routes = [
   ],
   providers: [
     MonitorApiService,
+    MonitorDataApiService,
     UrlBuilderService,
     WebRequestTestService,
     MonitorValidatorService,
