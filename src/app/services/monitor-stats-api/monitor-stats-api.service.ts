@@ -30,7 +30,6 @@ export class MonitorStatsApiService {
 
   private extractMonitorStats(response: Response): WebRequestStats | PingStats {
     const responseObj = response.json();
-    const type = responseObj.statsType;
 
     return responseObj.data;
   }
