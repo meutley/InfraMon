@@ -48,17 +48,23 @@ export class MonitorStatsComponent implements OnInit {
   private loadMonitorDetails(complete: () => void) {
     this.monitorApiService.getMonitor(this.id)
       .subscribe(data => {
-        this.isLoading = false;
-        this.didLoadingFail = false;
-        this.monitor = data;
+        this.onLoadMonitorDetails(data);
       }, err => {
-        this.isLoading = false;
-        this.didLoadingFail = true;
-      }, () => {
-        if (!this.didLoadingFail) {
-          complete();
-        }
+        this.onLoadMonitorDetailsFailed(err);
       });
+  }
+
+  private onLoadMonitorDetails(monitor: Monitor) {
+    this.isLoading = false;
+    this.didLoadingFail = false;
+    this.monitor = monitor;
+
+    this.loadMonitorStatsData();
+  }
+
+  private onLoadMonitorDetailsFailed(error: any) {
+    this.isLoading = false;
+    this.didLoadingFail = true;
   }
 
   private loadMonitorStatsData() {
