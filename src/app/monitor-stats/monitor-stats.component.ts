@@ -2,9 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { MonitorApiService } from '../services/monitor-api/monitor-api.service';
-import { MonitorDataApiService } from '../services/monitor-data-api/monitor-data-api.service';
+import { MonitorStatsApiService } from '../services/monitor-stats-api/monitor-stats-api.service';
 
 import { Monitor } from '../models/monitor';
+import { WebRequestStats } from '../models/web-request-stats';
+import { PingStats } from '../models/ping-stats';
 
 @Component({
   selector: 'app-monitor-stats',
@@ -26,7 +28,7 @@ export class MonitorStatsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private monitorApiService: MonitorApiService,
-    private monitorDataApiService: MonitorDataApiService) { }
+    private monitorStatsApiService: MonitorStatsApiService) { }
 
   ngOnInit() {
     this.routeParamsSub = this.route.params.subscribe(params => {
@@ -71,11 +73,22 @@ export class MonitorStatsComponent implements OnInit {
     this.isLoadingStatsData = true;
     this.didLoadingStatsDataFail = false;
 
-    // TODO: Implement MonitorDataApiService
-    setTimeout(() => {
-      this.isLoadingStatsData = false;
-      this.didLoadingStatsDataFail = false;
-    }, 2000);
+    this.monitorStatsApiService.getMonitorStats(this.monitor._id, this.monitor.type)
+      .subscribe(data => {
+        this.onLoadMonitorStats(data);
+      }, err => {
+        this.onLoadMonitorStatsFailed(err);
+      });
+  }
+
+  private onLoadMonitorStats(data: WebRequestStats | PingStats) {
+    this.isLoadingStatsData = false;
+    this.didLoadingStatsDataFail = false;
+  }
+
+  private onLoadMonitorStatsFailed(err: any) {
+    this.isLoadingStatsData = false;
+    this.didLoadingStatsDataFail = false;
   }
 
 }

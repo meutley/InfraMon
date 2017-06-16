@@ -39,10 +39,12 @@ const _get = function (db, collectionName) {
             }, failure);
         },
 
-        getAll: function (success, failure) {
+        getAll: function (success, failure, filter) {
+            const _filter = filter || {};
+            
             _doWithTryCatch(() => {
                 db.collection(collectionName)
-                    .find({}).toArray((err, res) => {
+                    .find(_filter).toArray((err, res) => {
                         if (err && typeof failure === 'function') {
                             failure(err);
                         } else if (!err) {
