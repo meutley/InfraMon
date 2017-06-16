@@ -18,6 +18,7 @@ export class MonitorStatsComponent implements OnInit {
   private id: string;
   private routeParamsSub: any;
   private monitor: Monitor;
+  private stats: WebRequestStats[] | PingStats[];
 
   private isLoading: boolean;
   private didLoadingFail: boolean;
@@ -81,14 +82,16 @@ export class MonitorStatsComponent implements OnInit {
       });
   }
 
-  private onLoadMonitorStats(data: WebRequestStats | PingStats) {
+  private onLoadMonitorStats(data: WebRequestStats[] | PingStats[]) {
     this.isLoadingStatsData = false;
     this.didLoadingStatsDataFail = false;
+
+    this.stats = data;
   }
 
   private onLoadMonitorStatsFailed(err: any) {
     this.isLoadingStatsData = false;
-    this.didLoadingStatsDataFail = false;
+    this.didLoadingStatsDataFail = true;
   }
 
 }

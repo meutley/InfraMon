@@ -14,7 +14,18 @@ router.get('/:id/:type', (req, res) => {
 
     const response = {
         statsType: type,
-        data: []
+        stats: [
+            {
+                date: new Date(),
+                isAlive: true,
+                responseTime: 33
+            },
+            {
+                date: new Date(),
+                isAlive: true,
+                responseTime: 33
+            }
+        ]
     };
     
     responseUtility.sendResponse(res, httpStatusCodes.OK, response);
